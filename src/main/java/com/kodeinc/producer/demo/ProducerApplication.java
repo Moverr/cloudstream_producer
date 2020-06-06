@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+
+@SpringBootApplication
 @RestController
 @EnableBinding(ProducerChannels.class)
-@SpringBootApplication
 public class ProducerApplication {
 
 //    private final MessageChannel Consumer;
@@ -24,13 +26,15 @@ public class ProducerApplication {
 //        this.Consumer = channels.consumer();
 //    }
 //
-//    @PostMapping("greet/{name}")
-//    public void publish(@PathVariable String name) {
-//        String greeting = "Hello " + name;
-//        Message<String> msg = MessageBuilder.withPayload(greeting).build();
-//
+    @PostMapping("greet/{name}")
+    public String  publish(@PathVariable String name) {
+        String greeting = "Hello " + name;
+        Message<String> msg = MessageBuilder.withPayload(greeting).build();
+
 //        this.Consumer.send(msg);
-//    }
+        
+        return "Hello Rogers";
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(ProducerApplication.class, args);
@@ -38,8 +42,8 @@ public class ProducerApplication {
 
 }
 
-interface ProducerChannels {
-
-    @Output
-    MessageChannel consumer();
-}
+//interface ProducerChannels {
+//
+//    @Output
+//    MessageChannel consumer();
+//}
