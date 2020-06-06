@@ -20,11 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableBinding(ProducerChannels.class)
 public class ProducerApplication {
 
-//    private final MessageChannel Consumer;
+    private final MessageChannel Consumer;
 
-//    public ProducerApplication(ProducerChannels channels) {
-//        this.Consumer = channels.consumer();
-//    }
+    public ProducerApplication(ProducerChannels channels) {
+        this.Consumer = channels.consumer();
+    }
 //
     @PostMapping("greet/{name}")
     public String  publish(@PathVariable String name) {
@@ -42,8 +42,8 @@ public class ProducerApplication {
 
 }
 
-//interface ProducerChannels {
-//
-//    @Output
-//    MessageChannel consumer();
-//}
+interface ProducerChannels {
+
+    @Output
+    MessageChannel consumer();
+}
