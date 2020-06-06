@@ -24,6 +24,7 @@ public class ProducerApplication {
 
     public ProducerApplication(ProducerChannels channels) {
         this.Consumer = channels.consumer();
+       
     }
 //
     @PostMapping("greet/{name}")
@@ -31,6 +32,7 @@ public class ProducerApplication {
         String greeting = "Hello " + name;
         Message<String> msg = MessageBuilder.withPayload(greeting).build();
 
+    
         this.Consumer.send(msg);
         
         return "Hello Rogers";
