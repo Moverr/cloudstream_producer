@@ -31,7 +31,7 @@ public class ProducerApplication {
         String greeting = "Hello " + name;
         Message<String> msg = MessageBuilder.withPayload(greeting).build();
 
-//        this.Consumer.send(msg);
+        this.Consumer.send(msg);
         
         return "Hello Rogers";
     }
