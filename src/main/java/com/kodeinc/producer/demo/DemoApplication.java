@@ -23,7 +23,7 @@ public class DemoApplication {
     }
     
     
-    @PostMapping("greet/{name}");
+    @PostMapping("greet/{name}")
     public void publish(@PathVariable String name){
         String greeting =  "Hello "+name;
     }
