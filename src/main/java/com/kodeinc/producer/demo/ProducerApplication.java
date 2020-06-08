@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableBinding(ProducerChannels.class)
 public class ProducerApplication {
 
-    private final MessageChannel Consumer;
+    private final MessageChannel consumer;
 
     public ProducerApplication(ProducerChannels channels) {
-        this.Consumer = channels.consumer(); 
+        this.consumer = channels.consumer(); 
     }
  
     @PostMapping("greet/{name}")
@@ -33,7 +33,7 @@ public class ProducerApplication {
         Message<String> msg = MessageBuilder.withPayload(greeting).build();
 
     
-        this.Consumer.send(msg);
+        this.consumer.send(msg);
         
         return "Hello Rogers";
     }
