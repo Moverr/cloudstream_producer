@@ -1,6 +1,7 @@
 package com.kodeinc.producer.demo;
 
 import java.util.function.Consumer;
+import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,10 +24,9 @@ public class ProducerApplication {
     private final MessageChannel Consumer;
 
     public ProducerApplication(ProducerChannels channels) {
-        this.Consumer = channels.consumer();
-       
+        this.Consumer = channels.consumer(); 
     }
-//
+ 
     @PostMapping("greet/{name}")
     public String  publish(@PathVariable String name) {
         String greeting = "Hello " + name;
@@ -46,6 +46,6 @@ public class ProducerApplication {
 
 interface ProducerChannels {
 
-    @Output
+    @Output("mixer") 
     MessageChannel consumer();
 }
