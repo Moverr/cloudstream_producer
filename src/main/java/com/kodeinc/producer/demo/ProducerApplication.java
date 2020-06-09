@@ -30,7 +30,8 @@ public class ProducerApplication {
     @PostMapping("greet/{name}")
     public String  publish(@PathVariable String name) {
         String greeting = "Hello " + name;
-        Message<String> msg = MessageBuilder.withPayload(greeting).build();
+        Message<String> msg = MessageBuilder.withPayload(greeting)
+                .build();
 
     
         this.consumer.send(msg);
