@@ -47,6 +47,6 @@ public class ProducerApplication {
 
 interface ProducerChannels {
 
-    @Output("mixer") 
+    @Output("mover") 
     MessageChannel consumer();
 }
